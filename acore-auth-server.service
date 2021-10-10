@@ -1,0 +1,12 @@
+[Unit]
+Description=Runs azerothcore authentication server
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/samuel/azeroth-server/bin/authserver
+ExecStop=/bin/kill -9 $(ps -aux | grep authserver | grep '/home' | awk '{print $2}')
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

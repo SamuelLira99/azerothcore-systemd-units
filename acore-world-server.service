@@ -1,0 +1,12 @@
+[Unit]
+Description=Runs azerothcore world server
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/samuel/azeroth-server/bin/worldserver
+ExecStop=/bin/kill -9 $(ps -aux | grep worldserver | grep '/home' | awk '{print $2}')
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
